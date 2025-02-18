@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #242424;">
+
+    <div class="container">
+        <h2 style="color: white;">João & Nádia</h2>
+
+        <!-- Banner de fotos centralizado -->
+        <div class="banner">
+            <img src="img/Nos1.jpeg" class="active" alt="Foto 1">
+            <img src="img/Nos2.jpeg" alt="Foto 2">
+            <img src="img/nos3.jpeg" alt="Foto 3">
+            <img src="img/nos4.jpeg" alt="">
+            <img src="img/nos5.jpeg" alt="">
+            <img src="img/nos6.jpeg" alt="">
+        </div>
+
+        <!-- Contador de tempo -->
+        <div class="contador" id="contador">
+            Calculando...
+        </div>
+
+        <p class="texto">Hoje completamos 3 meses juntos, e quero que saiba o quanto você é incrível. Nesse tempo, nos conhecemos melhor, aprendemos um sobre o outro, e cada momento – entre altos e baixos – foi especial para mim.<br><br>Estar ao seu lado é algo que amo, algo que me faz bem. Apesar de sempre ter apreciado minha solitude, percebo que estar com você é ainda mais incrível. Sua personalidade, seu jeito de me incentivar a ser uma pessoa melhor, sua forma de sempre querer me ajudar... tudo isso me faz admirar ainda mais você.<br><br>O tempo ao seu lado passa rápido, mas prefiro que voe ao seu lado do que estar longe de você. Como diz nossa música favorita, Turning Page:<br><br><p></p>
+            
+            <p style="font-style: italic;" class="texto"> "Eu esperei cem anos,<br>
+            Mas esperaria mais um milhão por você.<br>
+            Nada me preparou para,<br>
+            O que o privilégio de ser seu faria."<br><br>
+            
+            Feliz nossos 3 meses! ❤️</p>
+
+        <!-- Vídeo do YouTube -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/J5F9bPTm1xM" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <script>
+        // Definir a data de início do relacionamento (Formato: Ano, Mês (0-11), Dia)
+        const dataInicio = new Date(2024, 10, 19); // 19 de novembro de 2024
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - dataInicio;
+
+            const anos = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
+            const meses = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const dias = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById("contador").innerHTML = `
+                ${anos} anos, ${meses} meses, ${dias} dias <br>
+                ${horas} horas, ${minutos} minutos e ${segundos} segundos
+            `;
+        }
+
+        // Atualizar o contador a cada segundo
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+
+        // Script do banner de fotos automático
+        let index = 0;
+        function mudarImagem() {
+            const imagens = document.querySelectorAll(".banner img");
+            imagens[index].classList.remove("active");
+            index = (index + 1) % imagens.length;
+            imagens[index].classList.add("active");
+        }
+        setInterval(mudarImagem, 3000); // Troca de imagem a cada 3 segundos
+    </script>
+
+</body>
+</html>
